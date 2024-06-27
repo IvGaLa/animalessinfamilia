@@ -1,29 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import NavBarLink from './NavBarLink'
+import { NavLink } from 'react-router-dom'
+import Contexto from '../../contexts/Contexto'
 
 function NavBar() {
 
   // Creamos un array con los enlaces que queremos mostrar en el navbar
-  const enlaces = [
-    {
-      text: "Inicio",
-      to: "/"
-    }, {
-      text: "Animales",
-      to: "/animales"
-    }, {
-      text: "Sobre nosotros",
-      to: "/nosotros"
-    }, {
-      text: "Contacto",
-      to: "/contacto"
-    }
-  ]
-
+  const { enlaces } = useContext(Contexto)
 
   return (
     <nav className="flex flex-row justify-between px-14 bg-yellow-300 items-center h-24">
-      <h1 className="text-xl font-medium">Animales sin familia</h1>
+      <h1 className="text-xl font-medium"><NavLink to={'/'}>Animales sin familia</NavLink></h1>
       <ul className="flex flex-row gap-4 items-center text-[18px]">
         {
           enlaces.map((enlace, index) => (

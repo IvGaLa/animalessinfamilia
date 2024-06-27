@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 // Genera un enlace con la información que se le pase
 function NavBarLink({ children, to }) {
   return (
-    <NavLink className="" to={to}>
+    <NavLink className="hover:underline decoration-1" to={to}>
       {children}
     </NavLink>
   )
