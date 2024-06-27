@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { animales } from '../data/Animales'
+import { animales } from '../../data/Animales'
 import AnimalFull from './AnimalFull'
 
 function Animal() {

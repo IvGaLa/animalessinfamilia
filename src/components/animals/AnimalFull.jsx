@@ -19,7 +19,7 @@ function AnimalFull({ animal }) {
     <div>
       <h1>{animal.name}</h1>
       <h2>{animal.title}</h2>
-      <img src={`../images/${animal.image}`} alt={animal.name} />
+      <img className='max-w-lg	max-h-lg	' src={`/images/animals/${animal.image}`} alt={animal.name} />
       <p>{animal.description}</p>
     </div>
   )

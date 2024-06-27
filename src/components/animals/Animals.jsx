@@ -1,8 +1,8 @@
 import React from 'react'
-import { animales } from '../data/Animales'
+import { animales } from './../../data/Animales'
 import { NavLink } from 'react-router-dom'
 
-function Listado() {
+function Animals() {
   return (
     <div>
       {
@@ -16,4 +16,4 @@ function Listado() {
   )
 }
 
-export default Listado
+export default Animals

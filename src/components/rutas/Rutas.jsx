@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Listado from './Listado'
-import Animal from './Animal'
+import Animal from './../animals/Animal'
+import Animals from './../animals/Animals'
 
 function Rutas() {
   return (
     <Routes>
       <Route path='/animal/:id' element={<Animal />} />
-      <Route path='/' element={<Listado />} />
+      <Route path='/' element={<Animals />} />
     </Routes>
   )
 }
