@@ -15,7 +15,7 @@ function App() {
   }, [config.title]);
 
   return (
-    <div className='h-[calc(100dvh)]'>
+    <div className='h-[calc(100dvh)] bg-gradient-to-b from-gray-300'>
       <BrowserRouter>
         <NavBar />
         <Rutas />
