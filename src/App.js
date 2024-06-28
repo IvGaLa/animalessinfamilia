@@ -15,7 +15,7 @@ function App() {
   }, [config.title]);
 
   return (
-    <div className='h-[calc(100dvh)] bg-red-300'>
+    <div className='h-[calc(100dvh)]'>
       <BrowserRouter>
         <NavBar />
         <Rutas />

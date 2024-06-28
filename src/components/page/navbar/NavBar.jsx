@@ -12,19 +12,23 @@ function NavBar() {
   const linkstypes = data.linkstypes
 
   return (
-    <nav className="flex flex-row justify-between px-14 bg-yellow-300 items-center h-24">
-      <h1 className="text-xl font-medium"><NavLink to={'/'}>{config.title}</NavLink></h1>
-      <ul className="flex flex-row gap-4 items-center text-[18px]">
-        {
-          enlaces.map((enlace, index) => (
-
-            (enlace.where.find(where => where === linkstypes.navbar)) ? <li key={index}><NavBarLink to={enlace.to}>{enlace.text}</NavBarLink></li> : null
-
-          ))
-        }
-      </ul>
-    </nav>
+    <header className="text-gray-600 body-font">
+      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <NavLink className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" to={'/'}>
+          <img src='/images/logo/64x64.png' alt={config.title} />
+          <span className="ml-3 text-xl">{config.title}</span>
+        </NavLink>
+        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          {
+            enlaces.map((enlace, index) => (
+              (enlace.where.find(where => where === linkstypes.navbar)) ? <NavBarLink key={index} cName="mr-5 hover:text-gray-900" to={enlace.to}>{enlace.text}</NavBarLink> : null
+            ))
+          }
+        </nav>
+      </div>
+    </header>
   )
+
 }
 
 export default NavBar
