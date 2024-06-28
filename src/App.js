@@ -2,18 +2,24 @@ import { BrowserRouter } from 'react-router-dom';
 import Rutas from './components/rutas/Rutas';
 import NavBar from './components/page/navbar/NavBar';
 import Footer from './components/page/footer/Footer';
-import CtxProvider from './components/contexts/CtxProvider';
+import { useContext, useEffect } from 'react';
+import Contexto from './components/contexts/Contexto';
 
 
 function App() {
+  const { data } = useContext(Contexto)
+  const config = data.config
+
+  useEffect(() => {
+    document.title = config.title
+  }, [config.title]);
+
   return (
     <div className='h-[calc(100dvh)] bg-red-300'>
       <BrowserRouter>
-        <CtxProvider>
-          <NavBar />
-          <Rutas />
-          <Footer />
-        </CtxProvider>
+        <NavBar />
+        <Rutas />
+        <Footer />
       </BrowserRouter>
     </div>
   );
