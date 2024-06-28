@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { animales } from '../../data/Animales'
-import AnimalFull from './AnimalFull'
+import { data_animales } from '../../../data/DataAnimales'
+import AnimalFull from './_AnimalFull'
 
 function Animal() {
   const params = useParams()
-  const animal = animales.find((a) => a.id === Number(params.id))
+  const animal = data_animales.find((a) => a.id === Number(params.id))
 
   return (
     <div>

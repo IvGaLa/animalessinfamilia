@@ -1,4 +1,4 @@
-export const animales = [
+export const data_animales = [
   {
     "id": 0,
     "name": "Nombre0",

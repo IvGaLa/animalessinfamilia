@@ -8,7 +8,7 @@ const RouteWrapper = ({ element: Element }) => {
 
   const { data } = useContext(Contexto)
   const br = data.enlaces.find(e => e.to === location.pathname)
-  const title = `${data.config.title} - ${br.text}`
+  const title = (br) ? `${data.config.title} - ${br.text}` : data.config.title
 
   React.useEffect(() => {
     document.title = title
