@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import Contexto from '../../contexts/Contexto'
-import FooterLink from './FooterLink'
+import { NavLink } from 'react-router-dom'
 
-//    <div className='fixed bottom-0 bg-green-500 w-full'>Footer</div>
 function Footer() {
   const currentDate = new Date()
   const currentYear = currentDate.getFullYear()
@@ -12,21 +11,27 @@ function Footer() {
   const config = data.config
   const linkstypes = data.linkstypes
 
-  return (
-    <footer className="bg-white rounded-lg shadow dark:bg-gray-800 fixed bottom-0 w-screen">
-      <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {currentYear} <a href="/" className="hover:underline">{config.title}</a>
-        </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-          {
-            enlaces.map((enlace, index) => (
-              (enlace.where.find(where => where === linkstypes.footer)) ? <li key={index}><FooterLink to={enlace.to}>{enlace.text}</FooterLink></li> : null
-            ))
-          }
-        </ul>
-      </div>
-    </footer>
 
+  return (
+    <div className='fixed bottom-0 w-full bg-white px-4'>
+      <footer className="rounded-lg shadow dark:bg-gray-800 mb-1 bg-gradient-to-r from-green-100 to-green-300 hover:bg-gradient-to-l hover:from-gren-100 hover:to-green-300">
+        <div className="p-4 md:flex md:items-center md:justify-between">
+          <span className="text-sm text-gray-800 sm:text-center dark:text-gray-400">© {currentYear} <a href="/" className="hover:underline">{config.title}</a>
+          </span>
+          <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-800 dark:text-gray-400 sm:mt-0">
+            {
+              enlaces.map((enlace, index) => (
+                (enlace.where.find(where => where === linkstypes.footer)) ?
+                  <li key={index}>
+                    <NavLink className="hover:underline me-4 md:me-6" to={enlace.to}>{enlace.text}</NavLink>
+                  </li>
+                  : null
+              ))
+            }
+          </ul>
+        </div>
+      </footer>
+    </div>
   )
 }
 
