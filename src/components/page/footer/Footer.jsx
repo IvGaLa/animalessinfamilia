@@ -13,7 +13,7 @@ function Footer() {
 
 
   return (
-    <div className='fixed bottom-0 w-full bg-white px-4'>
+    <div className='fixed bottom-0 w-full px-4'>
       <footer className="rounded-lg shadow dark:bg-gray-800 mb-1 bg-gradient-to-r from-green-100 to-green-300 hover:bg-gradient-to-l hover:from-gren-100 hover:to-green-300">
         <div className="p-4 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-800 sm:text-center dark:text-gray-400">© {currentYear} <a href="/" className="hover:underline">{config.title}</a>
