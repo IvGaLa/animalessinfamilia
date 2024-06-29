@@ -1,15 +1,70 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Contexto from '../contexts/Contexto'
 
 function Inicio() {
+
+  const { data } = useContext(Contexto)
+
   return (
-    <div className='py-16 px-10'>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum leo eget mollis dignissim. Donec varius a leo eu porta. Duis et nisl sit amet lorem feugiat mattis sed vitae metus. Morbi sit amet congue dui. Maecenas volutpat diam vitae tortor maximus euismod. Morbi maximus tristique libero quis luctus. Etiam sed orci ut magna imperdiet porttitor a ut dolor. Sed ultrices ante a nibh egestas bibendum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate nibh et volutpat sodales. Aliquam ac malesuada mi. Phasellus mattis, dui vitae ornare sollicitudin, eros justo eleifend metus, nec placerat mi nisi sed purus. Quisque est arcu, mollis sit amet porttitor ac, vehicula in nunc. Nam urna leo, pretium id est ut, lobortis rutrum enim. Nam pellentesque pretium finibus. Suspendisse sed neque maximus dolor dapibus pharetra quis eget leo. Vestibulum ullamcorper finibus purus, et malesuada dolor mollis nec. Fusce non velit massa. Proin aliquam velit ut metus suscipit ultricies. Nullam aliquet et metus eu scelerisque. Nulla facilisi. Duis consequat ex nec ultrices tristique. Mauris maximus lacus malesuada mauris interdum finibus. Fusce eu faucibus elit, ut egestas elit.</p>
-      <p>Donec tristique mi et eros placerat suscipit vel vel orci. Sed ornare mollis elit ac ultricies. Vestibulum eget dolor id sem euismod malesuada. Donec suscipit non nisi ac varius. Nulla elementum, elit nec ultrices scelerisque, sem odio consequat odio, gravida maximus lectus metus vitae diam. Mauris porttitor, nibh condimentum suscipit dignissim, est tellus fringilla odio, a luctus nisi justo at erat. Cras dignissim nisl elementum molestie luctus. Morbi ullamcorper faucibus sapien eu dapibus. Nunc elementum orci nunc, in vestibulum dui cursus nec. Nam vulputate laoreet sapien semper interdum. Nulla semper luctus justo non porta. Fusce eleifend lectus vitae augue molestie, at rutrum orci blandit. Nulla ut mi id mauris molestie semper. Vivamus a sollicitudin elit.</p>
-      <p>Donec tristique mi et eros placerat suscipit vel vel orci. Sed ornare mollis elit ac ultricies. Vestibulum eget dolor id sem euismod malesuada. Donec suscipit non nisi ac varius. Nulla elementum, elit nec ultrices scelerisque, sem odio consequat odio, gravida maximus lectus metus vitae diam. Mauris porttitor, nibh condimentum suscipit dignissim, est tellus fringilla odio, a luctus nisi justo at erat. Cras dignissim nisl elementum molestie luctus. Morbi ullamcorper faucibus sapien eu dapibus. Nunc elementum orci nunc, in vestibulum dui cursus nec. Nam vulputate laoreet sapien semper interdum. Nulla semper luctus justo non porta. Fusce eleifend lectus vitae augue molestie, at rutrum orci blandit. Nulla ut mi id mauris molestie semper. Vivamus a sollicitudin elit.</p>
-      <p>Donec tristique mi et eros placerat suscipit vel vel orci. Sed ornare mollis elit ac ultricies. Vestibulum eget dolor id sem euismod malesuada. Donec suscipit non nisi ac varius. Nulla elementum, elit nec ultrices scelerisque, sem odio consequat odio, gravida maximus lectus metus vitae diam. Mauris porttitor, nibh condimentum suscipit dignissim, est tellus fringilla odio, a luctus nisi justo at erat. Cras dignissim nisl elementum molestie luctus. Morbi ullamcorper faucibus sapien eu dapibus. Nunc elementum orci nunc, in vestibulum dui cursus nec. Nam vulputate laoreet sapien semper interdum. Nulla semper luctus justo non porta. Fusce eleifend lectus vitae augue molestie, at rutrum orci blandit. Nulla ut mi id mauris molestie semper. Vivamus a sollicitudin elit.</p>
-    </div>
+    <section className={data.estilos.section}>
+      <h1 className={data.estilos.h1}>¡Bienvenidos a {data.config.title}!</h1>
+      <p className={data.estilos.p}>En nuestra protectora, nos dedicamos con amor y compromiso a rescatar, cuidar y encontrar hogares permanentes para animales abandonados y maltratados. Creemos firmemente que cada mascota merece una segunda oportunidad y un hogar lleno de cariño.</p>
+
+      <h2 className={data.estilos.h2}>Adoptar es salvar vidas</h2>
+      <p className={data.estilos.p}>Al adoptar un animal, no solo le das una nueva oportunidad de ser feliz, sino que también ayudas a reducir el número de animales sin hogar y maltratados. Cada adopción nos permite rescatar a otro animal en necesidad. Optar por la adopción en lugar de la compra es un acto de compasión y responsabilidad.</p>
+
+      <h2 className={data.estilos.h2}>Nuestro trabajo</h2>
+      <p className={data.estilos.p}>Mantener una protectora de animales es una labor que requiere dedicación y recursos. Desde la atención veterinaria, la alimentación, el alojamiento y el entrenamiento, cada animal recibe el cuidado necesario para recuperarse y estar listo para encontrar una familia que lo quiera.</p>
+
+      <h2 className={data.estilos.h2}>Cómo puedes ayudar</h2>
+      <p className={data.estilos.p}>Además de adoptar, hay muchas formas en las que puedes contribuir a nuestra causa:</p>
+      <ul className={data.estilos.ul}>
+        <li><span className={data.estilos.li_span}>Voluntariado:</span> Dedica tu tiempo y habilidades para ayudar a nuestros animales.</li>
+        <li><span className={data.estilos.li_span}>Donaciones:</span> Tus aportaciones económicas nos permiten seguir brindando cuidados y rescates.</li>
+        <li><span className={data.estilos.li_span}>Difusión:</span> Comparte nuestra misión y los perfiles de los animales disponibles para adopción en tus redes sociales.</li>
+      </ul>
+      <p className={data.estilos.p}>¡Únete a nuestra familia y forma parte del cambio! Con tu ayuda, podemos seguir salvando vidas y creando historias felices.</p>
+
+      <p className={data.estilos.p}>Gracias por visitar {data.config.title}. Juntos, podemos hacer una diferencia en la vida de estos animales maravillosos.</p>
+
+      <h3 className={data.estilos.h3}>¡Adopta, no compres!</h3>
+
+      <p className={data.estilos.p}>{data.config.title}</p>
+      <p className={data.estilos.p}>{data.config.email}</p>
+      <p className={data.estilos.p}>Redes sociales</p>
+    </section>
   )
+  /*
+  return (
+      <section className='py-16 px-10'>
+        <h1 className='font-serif text-6xl m-5 text-center'>¡Bienvenidos a {data.config.title}!</h1>
+        <p className='pl-5 pr-5 pb-3'>En nuestra protectora, nos dedicamos con amor y compromiso a rescatar, cuidar y encontrar hogares permanentes para animales abandonados y maltratados. Creemos firmemente que cada mascota merece una segunda oportunidad y un hogar lleno de cariño.</p>
+  
+        <h2 className='text-4xl italic m-3 pt-5'>Adoptar es salvar vidas</h2>
+        <p className='pl-5 pr-5 pb-3'>Al adoptar un animal, no solo le das una nueva oportunidad de ser feliz, sino que también ayudas a reducir el número de animales sin hogar y maltratados. Cada adopción nos permite rescatar a otro animal en necesidad. Optar por la adopción en lugar de la compra es un acto de compasión y responsabilidad.</p>
+  
+        <h2 className='text-4xl italic m-3 pt-5'>Nuestro trabajo</h2>
+        <p className='pl-5 pr-5 pb-3'>Mantener una protectora de animales es una labor que requiere dedicación y recursos. Desde la atención veterinaria, la alimentación, el alojamiento y el entrenamiento, cada animal recibe el cuidado necesario para recuperarse y estar listo para encontrar una familia que lo quiera.</p>
+  
+        <h2 className='text-4xl italic m-3 pt-5'>Cómo puedes ayudar</h2>
+        <p className='pl-5 pr-5 pb-3'>Además de adoptar, hay muchas formas en las que puedes contribuir a nuestra causa:</p>
+        <ul className='pl-12 mb-4'>
+          <li><span className='font-bold'>Voluntariado:</span> Dedica tu tiempo y habilidades para ayudar a nuestros animales.</li>
+          <li><span className='font-bold'>Donaciones:</span> Tus aportaciones económicas nos permiten seguir brindando cuidados y rescates.</li>
+          <li><span className='font-bold'>Difusión:</span> Comparte nuestra misión y los perfiles de los animales disponibles para adopción en tus redes sociales.</li>
+        </ul>
+        <p className='pl-5 pr-5 pb-3'>¡Únete a nuestra familia y forma parte del cambio! Con tu ayuda, podemos seguir salvando vidas y creando historias felices.</p>
+  
+        <p className='pl-5 pr-5 pb-3'>Gracias por visitar {data.config.title}. Juntos, podemos hacer una diferencia en la vida de estos animales maravillosos.</p>
+  
+        <h3 className='text-2xl font-bold m-2 ml-6 pb-4'>¡Adopta, no compres!</h3>
+  
+        <p className='pl-5 pr-5 pb-3'>{data.config.title}</p>
+        <p className='pl-5 pr-5 pb-3'>{data.config.email}</p>
+        <p className='pl-5 pr-5 pb-3'>Redes sociales</p>
+      </section>
+    )
+  */
 }
 
 export default Inicio

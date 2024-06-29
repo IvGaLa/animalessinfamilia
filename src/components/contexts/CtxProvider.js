@@ -4,6 +4,16 @@ import Contexto from "./Contexto"
 
 const CtxProvider = function ({ children }) {
 
+  const estilos = {
+    section: 'py-16 px-10',
+    h1: 'font-serif text-6xl m-5 text-center',
+    h2: 'text-4xl italic m-3 pt-5',
+    h3: 'text-2xl font-bold m-2 ml-6 pb-4',
+    p: 'pl-5 pr-5 pb-3',
+    ul: 'pl-12',
+    li_span: 'font-bold'
+  }
+
   // Guarda el tipo de links para los diferentes menús
   const linkstypes = {
     navbar: "NavBar",
@@ -43,7 +53,8 @@ const CtxProvider = function ({ children }) {
   const data = {
     config,
     linkstypes,
-    enlaces
+    enlaces,
+    estilos
   }
 
 
