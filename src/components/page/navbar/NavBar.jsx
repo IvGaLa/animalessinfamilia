@@ -21,7 +21,7 @@ function NavBar() {
           {
             enlaces.map((enlace, index) => (
               (enlace.where.find(where => where === linkstypes.navbar)) ?
-                <NavLink className='mr-5 hover:text-gray-900' to={enlace.to}>{enlace.text}</NavLink>
+                <NavLink key={index} className='mr-5 hover:text-gray-900' to={enlace.to}>{enlace.text}</NavLink>
                 : null
             ))
           }

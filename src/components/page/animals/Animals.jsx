@@ -1,23 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AnimalGrid from './AnimalGrid'
-import { data_animales } from '../../../data/DataAnimales'
+import Contexto from '../../contexts/Contexto'
 
 function Animals() {
+
+  const { data } = useContext(Contexto)
+
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Sed pharetra tincidunt dui eu facilisis. Phasellus vel leo et tortor laoreet maximus. Pellentesque nec pharetra erat. Aliquam nibh neque, porta sed lorem vitae, molestie ornare nisi. Nam vel facilisis nisl. Nullam nec nisl sit amet turpis porttitor efficitur. Nunc ipsum ex, ornare in erat ut, pulvinar sagittis felis. Vestibulum porttitor massa vel finibus laoreet. Aliquam non enim non lectus accumsan ultrices vitae id enim. Curabitur vulputate iaculis vehicula.</p>
-        </div>
-        <div className="flex flex-wrap -m-4">
-          {
-            data_animales.map((animal, index) => (
-              <AnimalGrid key={index} animal={animal} />
-            ))
-          }
-        </div>
-      </div>
+    <section className={data.estilos.section}>
+      <h1 className={data.estilos.h1}>¡Bienvenidos al área de adopción de {data.config.title}!</h1>
+
+      <p className={data.estilos.p}>Cada uno de nuestros animales ha sido rescatado y cuidado con amor, esperando encontrar un hogar lleno de cariño. Al adoptar, no solo estás dando una nueva oportunidad a un animal necesitado, sino que también estás ganando un compañero fiel y amoroso.</p>
+
+      <h2 className={data.estilos.h2}>Visítanos</h2>
+      <p className={data.estilos.p}>Estamos aquí para ayudarte a encontrar el compañero perfecto. ¡Ven a conocernos y descubre cómo puedes hacer una diferencia!</p>
+
+      <AnimalGrid />
     </section>
   )
 }

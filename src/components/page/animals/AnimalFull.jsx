@@ -1,11 +1,12 @@
 import React from 'react'
 import { IconCake, IconClock } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
-import { data_animales } from '../../../data/DataAnimales'
+import { getAnimalById } from '../../../data/DataAnimales'
 
 function AnimalFull() {
   const params = useParams()
-  const animal = data_animales.find((a) => a.id === Number(params.id))
+  const animal = getAnimalById(params.id)
+
   const iconSize = 24
 
   return (
