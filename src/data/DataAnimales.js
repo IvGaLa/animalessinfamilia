@@ -30,3 +30,9 @@ export const getAnimalsPerPage = (page = 1, animalsPerPage = _animalsPerPage) =>
   const animals = getAllAnimals()
   return animals.slice(start, end);
 }
+
+// Devuelve el número máximo de páginas
+export const getMaxPages = () => {
+  const max = paginationBar()
+  return max.length
+}

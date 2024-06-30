@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
 import { getAnimalsPerPage, paginationBar } from '../../../data/DataAnimales'
-import AnimalPagination from './AnimalPagination';
+import PaginationBar from '../pagination/PaginationBar';
 
 function AnimalGrid() {
 
@@ -48,35 +48,9 @@ function AnimalGrid() {
         }
       </div>
 
-      <AnimalPagination page={page} numPages={numPages} setPage={setPage} />
+      <PaginationBar page={page} numPages={numPages} setPage={setPage} />
     </>
   )
 }
 
 export default AnimalGrid
-
-/*
-
-      <div className="flex flex-wrap -m-4">
-        {
-          data_animales.map((animal, index) => (
-            <div key={index} className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img src={`/images/animals/384x384/${animal.image}`} alt={animal.name} className="px-8 py-10 absolute inset-0 h-96 w-96 object-cover object-center" />
-                <div className="px-8 py-10 relative w-96 border-2 border-gray-200 bg-white opacity-0 hover:opacity-80">
-                  <NavLink to={`/animal/${animal.id}`}>
-                    <h2 className="flex flex-row tracking-widest text-2xl title-font font-medium text-green-500 mb-1">
-                      {animal.name} ({animal.breed}) {(animal.sex === 'macho') ? <IconGenderMale size={iconSize} /> : <IconGenderFemale size={iconSize} />}
-                    </h2>
-                  </NavLink>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{animal.title}</h1>
-                  <p className="leading-relaxed">{animal.description}</p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-
-*/
