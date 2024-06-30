@@ -15,7 +15,7 @@ function App() {
   }, [config.title]);
 
   return (
-    <div>
+    <div className='relative min-h-screen'>
       <BrowserRouter>
         <NavBar />
         <Rutas />
