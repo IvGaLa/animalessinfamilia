@@ -11,3 +11,4 @@ Se ha realizado a modo de aprendizaje y sin ánimo de lucro, los textos, imágen
 | [Tailwindcss](https://tailwindcss.com/)     | A utility-first CSS framework packed with classes |
 | [Tabler](https://tabler.io/icons)     | Tabler Icons for React |
 | [Google](https://google.es)     | Buscador |
+| [ChatGPT](https://chatgpt.com/)     | IA |
