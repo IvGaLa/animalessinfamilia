@@ -16,7 +16,7 @@ export const getAnimalById = (id) => {
 // animalsPerPage indica el número de animales por página
 export const paginationBar = (animalsPerPage = _animalsPerPage) => {
   const total = Math.ceil(getAllAnimals().length / animalsPerPage)
-  let paginatorArray = []
+  const paginatorArray = []
   for (let i = 1; i <= total; i++) {
     paginatorArray.push(i)
   }

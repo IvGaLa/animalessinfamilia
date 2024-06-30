@@ -11,7 +11,8 @@ const CtxProvider = function ({ children }) {
     h3: 'text-2xl font-bold m-2 ml-6 pb-4',
     p: 'pl-5 pr-5 pb-3',
     ul: 'pl-12',
-    li_span: 'font-bold'
+    li_span: 'font-bold',
+    pagination_button: 'relative h-10 max-h-[40px] w-10 max-w-[40px] select-none ml-1 rounded-3xl border-2 border-green-600 text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-green-800 hover:text-gray-100 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
   }
 
   // Guarda el tipo de links para los diferentes menús

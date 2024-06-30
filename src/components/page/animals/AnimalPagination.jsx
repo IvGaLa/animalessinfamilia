@@ -1,21 +1,48 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
+import Contexto from '../../contexts/Contexto';
 
 function AnimalPagination({ page, numPages, setPage }) {
+
+  // Manejamos las flechas de Anterior y Siguiente
+  const handlerFlechas = (accion) => {
+    if ((accion === 'anterior') && (page !== 1)) {
+      setPage(page - 1)
+    }
+    if ((accion === 'siguiente') && (page !== 10)) {
+      setPage(page + 1)
+    }
+  }
+
+  const { data } = useContext(Contexto)
+
   return (
     <div className="flex row justify-center m-3">
+      <button
+        className={data.estilos.pagination_button}
+        type="button"
+        onClick={() => handlerFlechas('anterior')}
+      >
+        <span className='flex justify-center'><IconArrowLeft /></span>
+      </button >
       {
         numPages.map((pageNumber, index) => (
           <button
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg rounded-r-none rounded-l-none border border-gray-900 bg-gray-100 text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className={`${data.estilos.pagination_button} ${(page === pageNumber) ? 'bg-green-400' : 'bg-green-200'}`}
             type="button"
-            key={index}
-            onClick={() => setPage(pageNumber)}>
-            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              {pageNumber}
-            </span>
-          </button>
+            onClick={() => setPage(pageNumber)}
+            key={index}>
+            <span>{pageNumber}</span>
+          </button >
         ))
       }
+      <button
+        className={data.estilos.pagination_button}
+        type="button"
+        onClick={() => handlerFlechas('siguiente')}
+      >
+        <span className='flex justify-center'><IconArrowRight /></span>
+      </button >
     </div>
   )
 }
