@@ -12,7 +12,7 @@ function NavBar() {
       <header className="rounded-lg shadow bg-white">
         <div className="p-1 md:flex md:items-center md:justify-between">
           <span className="flex flex-row text-sm text-gray-800 sm:text-center items-center">
-            <img src='/images/logo/64x64.png' alt={data.config.title} />
+            <img src={`${data.config.dirs.logo}${data.config.logo}`} alt={data.config.title} />
             <NavLink className="align-middle hover:underline" to={'/'}>
               <span className="ml-3 text-xl">{data.config.title}</span>
             </NavLink>

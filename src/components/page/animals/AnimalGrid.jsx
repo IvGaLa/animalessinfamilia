@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
 import { getAnimalsPerPage, paginationBar } from '../../../data/DataAnimales'
 import PaginationBar from '../pagination/PaginationBar';
+import Contexto from '../../contexts/Contexto';
 
 function AnimalGrid() {
 
@@ -11,6 +12,7 @@ function AnimalGrid() {
   const [page, setPage] = useState(initPage)
   const numPages = paginationBar()
   const [animales, setAnimales] = useState(getAnimalsPerPage())
+  const { data } = useContext(Contexto)
 
   useEffect(() => {
     setAnimales(getAnimalsPerPage(page))
@@ -29,7 +31,7 @@ function AnimalGrid() {
                 <span className='flex justify-center'>
                   <img
                     className="rounded-full"
-                    src={`/images/animals/384x384/${animal.image}`}
+                    src={`${data.config.dirs.animals}${data.config.dirs.animals_thumb}${animal.image}`}
                     alt={animal.name} />
                 </span>
 

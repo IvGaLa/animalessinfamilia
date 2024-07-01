@@ -26,7 +26,14 @@ const CtxProvider = function ({ children }) {
   const config = {
     title: "Animales sin familia",
     description: "Animales sin familia es una protectora de animales para ayudar en la adopción.",
-    email: "email@animalessinfamilia"
+    email: "email@animalessinfamilia",
+    logo: "64x64.png",
+    dirs: {
+      animals: "images/animals/",
+      animals_thumb: "384x384/",
+      logo: "images/logo/",
+
+    }
   }
 
   // Guarda los enlaces a mostrar en los diferentes menús
