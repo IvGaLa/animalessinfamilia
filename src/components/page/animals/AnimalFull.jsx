@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IconCake, IconClock } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
 import { getAnimalById } from '../../../data/DataAnimales'
+import Contexto from '../../contexts/Contexto';
 
 function AnimalFull() {
   const params = useParams()
@@ -9,13 +10,15 @@ function AnimalFull() {
 
   const iconSize = 24
 
+  const { data } = useContext(Contexto)
+
   return (
     <>
       {
         (animal) ?
           <section className="text-gray-600 body-font">
             <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
-              <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt={animal.name} src={`/images/animals/${animal.image}`} />
+              <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt={animal.name} src={`${data.config.dirs.animals}${animal.image}`} />
               <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{animal.name}</h1>
                 <p className="mb-8 leading-relaxed">{animal.description}</p>
