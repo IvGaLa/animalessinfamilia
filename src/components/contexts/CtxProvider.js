@@ -22,6 +22,11 @@ const CtxProvider = function ({ children }) {
     sidebar: "SideBar"
   }
 
+  // Constantes para el sexo de los animales
+  const animalsex = {
+    macho: "macho",
+    hembra: "hembra"
+  }
   // Guarda configuración general del sitio
   const config = {
     title: "Animales sin familia",
@@ -57,12 +62,18 @@ const CtxProvider = function ({ children }) {
     }
   ]
 
+  // Guarda el nombre de variables de session storage
+  const sessionStorageNames = {
+    paginationPage: 'paginationPage'
+  }
 
   const data = {
     config,
     linkstypes,
     enlaces,
-    estilos
+    estilos,
+    animalsex,
+    sessionStorageNames
   }
 
 

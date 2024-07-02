@@ -7,50 +7,48 @@ import Contexto from '../../contexts/Contexto';
 
 function AnimalGrid() {
 
+  const { data } = useContext(Contexto)
   const iconSize = 30
-  const initPage = (sessionStorage.getItem('paginationPage') ? Number(sessionStorage.getItem('paginationPage')) : 1)
+  const initPage = (sessionStorage.getItem(data.sessionStorageNames.paginationPage) ? Number(sessionStorage.getItem(data.sessionStorageNames.paginationPage)) : 1)
   const [page, setPage] = useState(initPage)
   const numPages = paginationBar()
   const [animales, setAnimales] = useState(getAnimalsPerPage())
-  const { data } = useContext(Contexto)
+
 
   useEffect(() => {
     setAnimales(getAnimalsPerPage(page))
-    sessionStorage.setItem('paginationPage', page)
-  }, [page])
+    sessionStorage.setItem(data.sessionStorageNames.paginationPage, page)
+  }, [page, data.sessionStorageNames.paginationPage])
 
   return (
     <>
-      <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
+      <article className="grid-cols-1 sm:grid md:grid-cols-2 lg:grid-cols-3">
         {
           animales.map((animal, index) => (
             <NavLink key={index} to={`/animal/${animal.id}`}>
-              <div
-                className="p-2 mx-3 mt-6 flex flex-col rounded-[30px] bg-gradient-to-b from-gray-300  hover:bg-gradient-to-t">
-                <h5 className="flex justify-center mt-5 mb-9 text-5xl font-sans font-bold">{animal.name}</h5>
-                <span className='flex justify-center'>
+              <section
+                className="p-2 mx-3 mt-6 flex flex-col rounded-[30px] bg-gray-100 hover:bg-gray-200">
+                <h2 className="flex justify-center mt-5 mb-9 text-5xl font-sans font-bold">{animal.name}</h2>
+                <div className='flex justify-center'>
                   <img
                     className="rounded-full"
                     src={`${data.config.dirs.animals}${data.config.dirs.animals_thumb}${animal.image}`}
                     alt={animal.name} />
-                </span>
+                </div>
 
-                <div className="p-6">
-                  <p className="flex justify-center text-3xl">{animal.title}</p>
-                </div>
-                <div
-                  className="flex flex-row justify-between border-t-2 border-gray-300 px-6 py-3">
-                  <span>{animal.breed}</span>
-                  <span>{(animal.sex === 'macho') ? <IconGenderMale size={iconSize} /> : <IconGenderFemale size={iconSize} />}</span>
-                  <span>{animal.birth}</span>
-                </div>
-              </div>
+                <span className="p-6 flex justify-center text-3xl whitespace-nowrap">{animal.title}</span>
+                <section
+                  className="flex flex-col-2 justify-between border-t-2 border-gray-300 px-6 py-3">
+                  <span>{animal.breed} ({animal.birth})</span>
+                  <span>{(animal.sex === data.animalsex.macho) ? <IconGenderMale size={iconSize} /> : <IconGenderFemale size={iconSize} />}</span>
+                </section>
+              </section>
             </NavLink>
           ))
         }
-      </div>
-
-      <PaginationBar page={page} numPages={numPages} setPage={setPage} />
+      </article>
+      {/* Mostrará el paginador si hay mas de una página a mostrar*/}
+      {(numPages.length > 1) && <PaginationBar page={page} numPages={numPages} setPage={setPage} />}
     </>
   )
 }
