@@ -14,7 +14,7 @@ function PaginationButton({ numPages, page, setPage }) {
             type="button"
             onClick={() => setPage(pageNumber)}
             key={index}>
-            <span>{pageNumber}</span>
+            {pageNumber}
           </button >
         ))
       }
