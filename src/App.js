@@ -8,14 +8,13 @@ import Contexto from './components/contexts/Contexto';
 
 function App() {
   const { data } = useContext(Contexto)
-  const config = data.config
 
   useEffect(() => {
-    document.title = config.title
-  }, [config.title]);
+    document.title = data.config.title
+  }, [data.config.title]);
 
   return (
-    <div className='relative min-h-screen'>
+    <div className='relative bg-red-50 text-gray-900 text-xl min-h-screen'>
       <BrowserRouter>
         <NavBar />
         <Rutas />
