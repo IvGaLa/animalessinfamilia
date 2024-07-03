@@ -8,8 +8,10 @@ Se ha realizado a modo de aprendizaje y sin ánimo de lucro, los textos, imágen
 | Nombre | Descripción|
 | ---      | ---       |
 | [React](https://react.dev/) | The library for web and native user interfaces |
-| [Tailwindcss](https://tailwindcss.com/)     | A utility-first CSS framework packed with classes |
-| [Tabler](https://tabler.io/icons)     | Tabler Icons for React |
-| [Google](https://google.es)     | Buscador |
-| [ChatGPT](https://chatgpt.com/)     | IA |
-| [GitHub](https://github.com/)     | Control de versiones |
+| [Tailwindcss](https://tailwindcss.com/) | A utility-first CSS framework packed with classes |
+| [Tabler](https://tabler.io/icons) | Tabler Icons for React |
+| [Google](https://google.es) | Buscador |
+| [ChatGPT](https://chatgpt.com/) | IA |
+| [GitHub](https://github.com/) | Control de versiones |
+| [Netlify](https://www.netlify.com/) | Connect everything. Build anything. |
+| [Demo](https://animalessinfamilia.netlify.app/) | Web demo en Netlify |
