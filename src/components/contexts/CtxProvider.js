@@ -36,8 +36,15 @@ const CtxProvider = function ({ children }) {
     dirs: {
       animals: "/images/animals/",
       animals_thumb: "/384x384/",
-      logo: "/images/logo/",
-
+      logo: "/images/logo/"
+    },
+    rutas: {
+      root: '/',
+      animales: '/animales',
+      animal: '/animal/',
+      adopted: '/adopted',
+      contacto: '/contacto',
+      nosotros: '/nosotros'
     }
   }
 
