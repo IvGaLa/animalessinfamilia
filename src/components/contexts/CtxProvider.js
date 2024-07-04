@@ -29,7 +29,7 @@ const CtxProvider = function ({ children }) {
   }
   // Guarda configuración general del sitio
   const config = {
-    title: "Animales sin familia",
+    title: "Animales sin familia (En desarrollo)",
     description: "Animales sin familia es una protectora de animales para ayudar en la adopción.",
     email: "email@animalessinfamilia",
     logo: "64x64.png",
@@ -53,19 +53,19 @@ const CtxProvider = function ({ children }) {
     {
       where: [linkstypes.footer, linkstypes.navbar],
       text: "Inicio",
-      to: "/"
+      to: config.rutas.root
     }, {
       where: [linkstypes.footer, linkstypes.navbar],
       text: "Animales",
-      to: "/animales"
+      to: config.rutas.animales
     }, {
       where: [linkstypes.footer],
       text: "Sobre nosotros",
-      to: "/nosotros"
+      to: config.rutas.nosotros
     }, {
       where: [linkstypes.navbar],
       text: "Contacto",
-      to: "/contacto"
+      to: config.rutas.contacto
     }
   ]
 
