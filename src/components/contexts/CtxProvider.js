@@ -1,5 +1,3 @@
-//import React, { useState } from "react"
-import React from "react"
 import Contexto from "./Contexto"
 
 const CtxProvider = function ({ children }) {

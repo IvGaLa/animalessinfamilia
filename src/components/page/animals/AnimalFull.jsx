@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { IconCake, IconClock } from '@tabler/icons-react';
+import { useContext } from 'react'
+import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
 import { getAnimalById } from '../../../data/DataAnimales'
 import Contexto from '../../contexts/Contexto';
@@ -16,26 +16,53 @@ function AnimalFull() {
     <>
       {
         (animal) ?
-          <section className="text-gray-600 body-font">
-            <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
-              <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt={animal.name} src={`${data.config.dirs.animals}${animal.image}`} />
-              <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
-                <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{animal.name}</h1>
-                <p className="mb-8 leading-relaxed">{animal.description}</p>
-                <div className='flex flex-col'>
-                  <span className='flex flex-row'><IconCake size={iconSize} />{animal.birth}</span>
-                  <span className='flex flex-row'><IconClock size={iconSize} />{animal.since}</span>
-                </div>
-                <p className="text-sm mt-2 text-gray-500 mb-8 w-full"></p>
+          <div className=" px-10 py-6 mx-auto">
+
+            <div className="max-w-6xl px-10 py-6 mx-auto bg-gray-50 my-20 rounded-2xl">
+
+              <img className="rounded-3xl w-full shadow-xl h-full" src={`${data.config.dirs.animals}${animal.image}`} alt={animal.name} />
+              <div className="flex items-center justify-start mt-4 mb-4">
+                <span className="text-sm p-1 bg-red-400 text-white rounded-lg">
+                  {animal.breed}
+                </span>
               </div>
+
+              <div className="mt-2">
+                <span className="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-purple-500">
+                  {animal.name}
+                </span>
+                <div className="flex justify-start items-center text-sm text-gray-400 font-bold">
+                  <p className="mt-2 p-2 rounded-full hover:bg-gray-200 hover:text-orange-400">
+                    <IconCake size={iconSize} className='inline' /> {animal.birth}
+                  </p>
+                  <p className="mt-2 p-2 rounded-full hover:bg-gray-200 hover:text-purple-400">
+                    <IconHome size={iconSize} className='inline' /> {animal.since}
+                  </p>
+                </div>
+                <div className="font-light text-gray-600">
+                  <span className="flex items-center mt-6 mb-6">
+                    {(animal.sex === data.animalsex.macho)
+                      ? <IconGenderMale className='rounded-full sm:block text-blue-400' size={iconSize} />
+                      : <IconGenderFemale className='rounded-full sm:block text-pink-400' size={iconSize} />}
+                    <h1 className="ml-3 font-bold text-gray-700">{animal.title}</h1>
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl text-2xl text-gray-700 bg-gray-100">
+                <p className="mt-2 p-2">
+                  {animal.description}
+                </p>
+              </div>
+
             </div>
-          </section>
+
+          </div>
           :
-          <Navigate to='/adopted' />
+          <Navigate to={data.config.rutas.adopted} />
       }
     </>
   )
-
 }
 
 export default AnimalFull
