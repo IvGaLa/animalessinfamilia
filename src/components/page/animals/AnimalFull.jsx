@@ -1,12 +1,25 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
-import { getAnimalById } from '../../../data/DataAnimales'
 import Contexto from '../../contexts/Contexto';
+import { doc, getDoc } from 'firebase/firestore';
+import { dbAnimales } from '../../../db/FirebaseConnector';
 
 function AnimalFull() {
   const params = useParams()
-  const animal = getAnimalById(params.id)
+
+  const [animal, setAnimal] = useState()
+  const [buscado, setBuscado] = useState(false)
+
+  useEffect(() => {
+    const animalRef = doc(dbAnimales, 'animales', params.id)
+    getDoc(animalRef)
+      .then((animal) => {
+        setAnimal(animal.data())
+        setBuscado(true)
+      })
+
+  }, [params.id])
 
   const iconSize = 24
 
@@ -59,6 +72,7 @@ function AnimalFull() {
 
           </div>
           :
+          (buscado) &&
           <Navigate to={data.config.rutas.adopted} />
       }
     </>

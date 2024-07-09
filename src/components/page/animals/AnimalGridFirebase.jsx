@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
-import { getAnimalsPerPage, paginationBar } from '../../../data/DataAnimales'
-import PaginationBar from '../pagination/PaginationBar';
 import Contexto from '../../contexts/Contexto';
+import { collection, getDocs } from 'firebase/firestore';
+import { dbAnimales } from '../../../db/FirebaseConnector';
 
-function AnimalGrid() {
+
+function AnimalGridFirebase() {
 
   const { data } = useContext(Contexto)
+
   const iconSize = 24
-  const initPage = (sessionStorage.getItem(data.sessionStorageNames.paginationPage) ? Number(sessionStorage.getItem(data.sessionStorageNames.paginationPage)) : 1)
-  const [page, setPage] = useState(initPage)
-  const numPages = paginationBar()
-  const [animales, setAnimales] = useState(getAnimalsPerPage())
 
   const colorSex = {
     [data.animalsex.hembra]: {
@@ -27,15 +25,25 @@ function AnimalGrid() {
     }
   }
 
+  const [animales, setAnimales] = useState()
   useEffect(() => {
-    setAnimales(getAnimalsPerPage(page))
-    sessionStorage.setItem(data.sessionStorageNames.paginationPage, page)
-  }, [page, data.sessionStorageNames.paginationPage])
+    const animalesCol = collection(dbAnimales, 'animales')
+    getDocs(animalesCol)
+      .then((res) => {
+        setAnimales(
+          res.docs.map((animal) => {
+            return { ...animal.data(), id: animal.id }
+          })
+        )
+      })
+  }, [])
+
 
   return (
     <>
       <article className="grid-cols-1 sm:grid md:grid-cols-2 lg:grid-cols-3">
         {
+          (animales) &&
           animales.map((animal, index) => (
             < NavLink key={index} to={`${data.config.rutas.animal}${animal.id}`}>
               <section className={`${colorSex[animal.sex]['text']} ${colorSex[animal.sex]['cardborder']} p-2 mx-3 mt-6 flex flex-col rounded-[30px] bg-gray-800 shadow-none transition-shadow duration-300 ease-in-out hover:shadow-2xl hover:shadow-black`}>
@@ -69,9 +77,9 @@ function AnimalGrid() {
         }
       </article >
       {/* Mostrará el paginador si hay mas de una página a mostrar*/}
-      {(numPages.length > 1) && <PaginationBar page={page} numPages={numPages} setPage={setPage} />}
+      {/*(numPages.length > 1) && <PaginationBar page={page} numPages={numPages} setPage={setPage} />*/}
     </>
   )
 }
 
-export default AnimalGrid
+export default AnimalGridFirebase
