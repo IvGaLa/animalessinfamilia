@@ -25,4 +25,4 @@ yarn-error.log*
 /%SystemDrive%
 /.turbo
 
-/src/db/firebaseConfig.js
+/src/db/tursoConfig.js
