@@ -1,24 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
-//import { getAnimalsPerPage, paginationBar } from '../../../data/DataAnimales'
-//import PaginationBar from '../pagination/PaginationBar';
 import Contexto from '../../contexts/Contexto';
-import { getAllAnimals, getCount, getPages } from '../../../db/tursoQueries';
+
+import { turso } from '../../../db/tursoClient';
+import PaginationBarTurso from '../pagination/PaginationBarTurso';
 
 
 function AnimalGrid() {
 
   const { data } = useContext(Contexto)
   const iconSize = 24
-  const initPage = (sessionStorage.getItem(data.sessionStorageNames.paginationPage) ? Number(sessionStorage.getItem(data.sessionStorageNames.paginationPage)) : 1)
-
-  const [page, setPage] = useState(initPage)
-  const [numpages, setNumPages] = useState()
-
   const [animales, setAnimales] = useState()
-
-
   const colorSex = {
     [data.animalsex.hembra]: {
       text: 'text-pink-300',
@@ -32,17 +25,23 @@ function AnimalGrid() {
     }
   };
 
+  const [offset, setOffset] = useState(data.config.turso.animalsPerPage * 5)
+
 
   useEffect(() => {
-    getPages(data).then((page) => {
-      console.log(page)
-      setNumPages(page)
-    })
-    setAnimales(getAllAnimals(setAnimales, data))
-  }, [data])
+    const table = data.config.turso.animalsTable
+    const perPage = data.config.turso.animalsPerPage
+    const sql = `SELECT * FROM ${table} ORDER BY id ASC LIMIT ${perPage} OFFSET ${offset};`
+
+    turso.execute(sql)
+      .then((rs) => {
+        setAnimales(rs.rows)
+      })
+  }, [data, offset])
 
   return (
     <>
+      <PaginationBarTurso setOffset={setOffset} offset={offset} />
       <article className="grid-cols-1 sm:grid md:grid-cols-2 lg:grid-cols-3">
         {
           (animales) &&
@@ -57,6 +56,7 @@ function AnimalGrid() {
                     </h2>
 
                     <h3 className={`text-2xl m-2 p-4 whitespace-nowrap text-center`}>{animal.title}</h3>
+                    <h3 className={`text-sm m-2 p-4 whitespace-nowrap text-center`}>{animal.image}</h3>
 
                     <div className='flex justify-center'>
                       <img

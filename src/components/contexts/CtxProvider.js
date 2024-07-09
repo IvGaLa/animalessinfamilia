@@ -56,7 +56,7 @@ const CtxProvider = function ({ children }) {
     },
     turso: {
       animalsTable: 'animales',
-      animalsPerPage: '9'
+      animalsPerPage: 9
     }
   }
 
