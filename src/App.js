@@ -5,7 +5,6 @@ import Footer from './components/page/footer/Footer';
 import { useContext, useEffect } from 'react';
 import Contexto from './components/contexts/Contexto';
 
-
 function App() {
   const { data } = useContext(Contexto)
 

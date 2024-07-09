@@ -2,8 +2,10 @@ import React, { useState, useEffect, useContext } from 'react'
 import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
 import Contexto from '../../contexts/Contexto';
-import { collection, getDocs } from 'firebase/firestore';
-import { dbAnimales } from '../../../db/FirebaseConnector';
+//import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
+//import { dbAnimales } from '../../../db/FirebaseConnector';
+import PaginationBarFirebase from '../pagination/PaginationBarFirebase';
+import { GetAnimalsAll } from '../../../db/firebaseUtils';
 
 
 function AnimalGridFirebase() {
@@ -26,21 +28,31 @@ function AnimalGridFirebase() {
   }
 
   const [animales, setAnimales] = useState()
+
+  //const animalesCol = collection(dbAnimales, 'animales')
+  //const perPage = data.config.firestore.animalsPerPage
   useEffect(() => {
-    const animalesCol = collection(dbAnimales, 'animales')
-    getDocs(animalesCol)
+    GetAnimalsAll(data, setAnimales)
+    /* 
+    getDocs(query(animalesCol, orderBy("image"), limit(perPage)))
       .then((res) => {
-        setAnimales(
-          res.docs.map((animal) => {
-            return { ...animal.data(), id: animal.id }
-          })
-        )
-      })
-  }, [])
+                setAnimales(
+                  res.docs.map((animal) => {
+                    return { ...animal.data(), id: animal.id }
+                  })
+                )
+    })
+                */
+  }, [data, animales, setAnimales])
 
 
   return (
     <>
+      {/* Mostrará el paginador si hay mas de una página a mostrar*/}
+      {
+        <PaginationBarFirebase />
+      }
+      {/*(numPages.length > 1) && <PaginationBar page={page} numPages={numPages} setPage={setPage} />*/}
       <article className="grid-cols-1 sm:grid md:grid-cols-2 lg:grid-cols-3">
         {
           (animales) &&
@@ -53,6 +65,7 @@ function AnimalGridFirebase() {
                 </h2>
 
                 <h3 className={`text-2xl m-2 p-4 whitespace-nowrap text-center`}>{animal.title}</h3>
+                <h3 className={`text-2xl m-2 p-4 whitespace-nowrap text-center`}>{animal.image}</h3>
 
                 <div className='flex justify-center'>
                   <img
@@ -76,8 +89,6 @@ function AnimalGridFirebase() {
           ))
         }
       </article >
-      {/* Mostrará el paginador si hay mas de una página a mostrar*/}
-      {/*(numPages.length > 1) && <PaginationBar page={page} numPages={numPages} setPage={setPage} />*/}
     </>
   )
 }

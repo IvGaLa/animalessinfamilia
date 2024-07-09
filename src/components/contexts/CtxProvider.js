@@ -53,6 +53,10 @@ const CtxProvider = function ({ children }) {
       adopted: '/adopted',
       contacto: '/contacto',
       nosotros: '/nosotros'
+    },
+    firestore: {
+      collection: 'animales',
+      animalsPerPage: 3
     }
   }
 
