@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { turso } from '../../../db/tursoClient';
 import Contexto from '../../contexts/Contexto';
 
-function PaginationBarTurso({ setOffset, offset }) {
+function PaginationBarTurso({ setOffset }) {
 
   const { data } = useContext(Contexto)
 
   const perPage = data.config.turso.animalsPerPage
   const [pages, setPages] = useState()
-  const [paginaActual, setPaginaActual] = useState(5)
-
+  const [pageActual, setPageActual] = useState(1)
 
   useEffect(() => {
     const table = data.config.turso.animalsTable
@@ -25,27 +24,27 @@ function PaginationBarTurso({ setOffset, offset }) {
   }, [data, perPage])
 
 
-
-  const handlerBotones = (accion) => {
-    if (accion === '>') {
-      if ((paginaActual + 1) <= pages.length) {
-        setPaginaActual(paginaActual + 1)
-        setOffset(paginaActual * perPage)
-      }
-    } else {
-      if ((paginaActual - 1) >= 0) {
-        setPaginaActual(paginaActual - 1)
-        setOffset((paginaActual - 1) * perPage)
-      }
-    }
+  const handlerChangePage = (pageNum) => {
+    setPageActual(pageNum)
+    setOffset((pageNum - 1) * perPage)
   }
 
 
-
   return (
-    <div className='flex flex-row justify-between'>
-      <button name="anterior" onClick={() => handlerBotones('<')} className='border-2 border-pink-600 p-2 rounded-full bg-white text-black hover:text-white hover:bg-gray-800 text-sm'>Anterior</button>
-      <button name="siguiente" onClick={() => handlerBotones('>')} className='border-2 border-pink-600 p-2 rounded-full bg-white text-black hover:text-white hover:bg-gray-800 text-sm'>Siguiente</button>
+    <div className='flex flex-row justify-center mt-5 mb-3'>
+      {
+        (pages) && (
+          <>
+            {
+              pages.map((page, index) => (
+                <button key={index} onClick={() => handlerChangePage(page)} className={`${(pageActual === page ? 'bg-gray-300' : 'bg-white')} mx-2 border-2 border-pink-600 p-2 rounded-full  text-black hover:text-white hover:bg-gray-800 text-sm`}>
+                  {page}
+                </button>
+              ))
+            }
+          </>
+        )
+      }
     </div>
   )
 }
