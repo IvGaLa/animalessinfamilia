@@ -27,6 +27,7 @@ function AnimalGrid() {
 
   return (
     <>
+      <PaginationBarTurso setOffset={setOffset} />
       <article className="grid-cols-1 sm:grid md:grid-cols-2 lg:grid-cols-3">
         {
           (animales) &&
@@ -35,7 +36,6 @@ function AnimalGrid() {
           ))
         }
       </article >
-      <PaginationBarTurso setOffset={setOffset} />
     </>
   )
 }

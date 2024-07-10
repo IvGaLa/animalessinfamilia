@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { turso } from '../../../db/tursoClient';
 import Contexto from '../../contexts/Contexto';
+import { IconArrowBigLeft, IconArrowBigRight } from '@tabler/icons-react';
 
 function PaginationBarTurso({ setOffset }) {
 
@@ -23,18 +24,35 @@ function PaginationBarTurso({ setOffset }) {
       })
   }, [data, perPage])
 
-
   const handlerChangePage = (pageNum) => {
-    setPageActual(pageNum)
-    setOffset((pageNum - 1) * perPage)
+    if (Number.isInteger(pageNum)) {
+      setPageActual(pageNum)
+      setOffset((pageNum - 1) * perPage)
+    } else {
+      if (pageNum === '+') {
+        // Siguiente
+        if (pageActual < 10) {
+          pageNum = pageActual + 1
+          setPageActual(pageNum)
+          setOffset((pageNum - 1) * perPage)
+        }
+      } else if (pageActual > 1) {
+        // Anterior
+        pageNum = pageActual - 1
+        setPageActual(pageNum)
+        setOffset((pageNum - 1) * perPage)
+      }
+    }
   }
-
 
   return (
     <div className='flex flex-row justify-center mt-5 mb-3'>
       {
         (pages) && (
           <>
+            <button onClick={() => handlerChangePage('-')} className='bg-white mx-2 border-2 border-pink-600 p-2 rounded-full  text-black hover:text-white hover:bg-gray-800 text-sm'>
+              <IconArrowBigLeft />
+            </button>
             {
               pages.map((page, index) => (
                 <button key={index} onClick={() => handlerChangePage(page)} className={`${(pageActual === page ? 'bg-gray-300' : 'bg-white')} mx-2 border-2 border-pink-600 p-2 rounded-full  text-black hover:text-white hover:bg-gray-800 text-sm`}>
@@ -42,6 +60,9 @@ function PaginationBarTurso({ setOffset }) {
                 </button>
               ))
             }
+            <button onClick={() => handlerChangePage('+')} className='bg-white mx-2 border-2 border-pink-600 p-2 rounded-full  text-black hover:text-white hover:bg-gray-800 text-sm'>
+              <IconArrowBigRight />
+            </button>
           </>
         )
       }
