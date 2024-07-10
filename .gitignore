@@ -26,3 +26,4 @@ yarn-error.log*
 /.turbo
 
 /src/db/firebaseConfig.js
+/src/db/tursoConfig.js
