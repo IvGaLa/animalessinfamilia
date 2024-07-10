@@ -9,7 +9,7 @@ function PaginationBarTurso({ setOffset }) {
 
   const perPage = data.config.turso.animalsPerPage
   const [pages, setPages] = useState()
-  const [pageActual, setPageActual] = useState(1)
+  const [pageActual, setPageActual] = useState((sessionStorage.getItem(data.sessionStorageNames.paginationPage)) ? Number(sessionStorage.getItem(data.sessionStorageNames.paginationPage)) : 1)
 
   useEffect(() => {
     const table = data.config.turso.animalsTable
@@ -21,6 +21,8 @@ function PaginationBarTurso({ setOffset }) {
         const totalPaginas = Math.ceil(total / perPage);
         const paginas = Array.from({ length: totalPaginas }, (v, i) => i + 1);
         setPages(paginas)
+        setPageActual(pageActual)
+        setOffset((pageActual - 1) * perPage)
       })
   }, [data, perPage])
 
@@ -43,6 +45,7 @@ function PaginationBarTurso({ setOffset }) {
         setOffset((pageNum - 1) * perPage)
       }
     }
+    sessionStorage.setItem(data.sessionStorageNames.paginationPage, pageActual)
   }
 
   return (

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-//import AnimalGrid from './AnimalGrid'
 import AnimalGridTurso from './AnimalGridTurso'
 import Contexto from '../../contexts/Contexto'
 

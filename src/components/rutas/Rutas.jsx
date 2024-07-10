@@ -4,7 +4,7 @@ import Animals from '../page/animals/Animals';
 import Inicio from './../page/Inicio';
 import Contacto from './../page/Contacto';
 import RouteWrapper from './RouteWrapper'; // Wrapper para ejecutar código antes de entrar a los enlaces.
-import AnimalFull from '../page/animals/AnimalFull';
+import AnimalFullTurso from '../page/animals/AnimalFullTurso';
 import Adopted from '../page/animals/Adopted';
 import About from '../page/About';
 import Contexto from '../contexts/Contexto';
@@ -16,7 +16,7 @@ function Rutas() {
   return (
     <Routes>
       <Route path={data.config.rutas.animales} element={<RouteWrapper element={Animals} />} />
-      <Route path={`${data.config.rutas.animal}:id`} element={<RouteWrapper element={AnimalFull} />} />
+      <Route path={`${data.config.rutas.animal}:id`} element={<RouteWrapper element={AnimalFullTurso} />} />
       <Route path={data.config.rutas.adopted} element={<RouteWrapper element={Adopted} />} />
       <Route path={data.config.rutas.contacto} element={<RouteWrapper element={Contacto} />} />
       <Route path={data.config.rutas.nosotros} element={<RouteWrapper element={About} />} />
