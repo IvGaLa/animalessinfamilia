@@ -21,31 +21,31 @@ function PaginationBarTurso({ setOffset }) {
         const totalPaginas = Math.ceil(total / perPage);
         const paginas = Array.from({ length: totalPaginas }, (v, i) => i + 1);
         setPages(paginas)
-        setPageActual(pageActual)
         setOffset((pageActual - 1) * perPage)
       })
   }, [data, perPage])
 
-  const handlerChangePage = (pageNum) => {
-    if (Number.isInteger(pageNum)) {
-      setPageActual(pageNum)
-      setOffset((pageNum - 1) * perPage)
-    } else {
-      if (pageNum === '+') {
-        // Siguiente
-        if (pageActual < 10) {
-          pageNum = pageActual + 1
-          setPageActual(pageNum)
-          setOffset((pageNum - 1) * perPage)
-        }
-      } else if (pageActual > 1) {
-        // Anterior
-        pageNum = pageActual - 1
-        setPageActual(pageNum)
-        setOffset((pageNum - 1) * perPage)
-      }
+  useEffect(()=>{
+    if(sessionStorage.getItem(data.sessionStorageNames.paginationPage) !== pageActual){
+      sessionStorage.setItem(data.sessionStorageNames.paginationPage, pageActual)
     }
-    sessionStorage.setItem(data.sessionStorageNames.paginationPage, pageActual)
+  },[pageActual, data.sessionStorageNames.paginationPage])
+
+  const handlerChangePage = (pageNum) => {
+    switch (pageNum) {
+      case '+': // Siguiente
+        pageNum = (pageActual < 10) ? pageActual + 1 : pageActual
+        break;
+    
+      case '-': // Anterior
+        pageNum = (pageActual > 1) ? pageActual - 1 : pageActual
+        break
+
+      default:
+        break;
+    }
+    setPageActual(pageNum)
+    setOffset((pageNum - 1) * perPage)
   }
 
   return (
