@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Contexto from '../../contexts/Contexto'
+import Contexto from 'components/contexts/Contexto'
 import { NavLink } from 'react-router-dom'
 import { IconBrandFacebook, IconBrandInstagram, IconBrandX } from '@tabler/icons-react'
 import SocialLinks from './SocialLinks'

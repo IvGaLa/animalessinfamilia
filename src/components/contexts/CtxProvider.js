@@ -1,4 +1,4 @@
-import Contexto from "./Contexto"
+import Contexto from './Contexto'
 
 const CtxProvider = function ({ children }) {
 
@@ -53,6 +53,10 @@ const CtxProvider = function ({ children }) {
       adopted: '/adopted',
       contacto: '/contacto',
       nosotros: '/nosotros'
+    },
+    turso: {
+      animalsTable: 'animales',
+      animalsPerPage: 9
     }
   }
 

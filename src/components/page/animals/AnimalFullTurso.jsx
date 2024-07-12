@@ -1,16 +1,27 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
-import { getAnimalById } from '../../../data/DataAnimales'
-import Contexto from '../../contexts/Contexto';
+import { turso } from 'db/tursoClient';
+import Contexto from 'components/contexts/Contexto';
 
 function AnimalFull() {
   const params = useParams()
-  const animal = getAnimalById(params.id)
-
   const iconSize = 24
-
   const { data } = useContext(Contexto)
+  const [animal, setAnimal] = useState()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const id = (isNaN(Number(params.id))) ? 0 : params.id
+    const table = data.config.turso.animalsTable
+    const sql = `SELECT * FROM ${table} WHERE id = ${id};`
+
+    turso.execute(sql)
+      .then((rs) => {
+        setAnimal(rs.rows[0])
+        setLoading(false)
+      })
+  }, [data, params])
 
   return (
     <>
@@ -59,7 +70,12 @@ function AnimalFull() {
 
           </div>
           :
-          <Navigate to={data.config.rutas.adopted} />
+          <>
+            {
+              (loading !== true) &&
+              <Navigate to={data.config.rutas.adopted} />
+            }
+          </>
       }
     </>
   )

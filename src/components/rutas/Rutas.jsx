@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Animals from '../page/animals/Animals';
-import Inicio from './../page/Inicio';
-import Contacto from './../page/Contacto';
+import Animals from 'components/page/animals/Animals';
+import Inicio from 'components/page/Inicio';
+import Contacto from 'components/page/Contacto';
 import RouteWrapper from './RouteWrapper'; // Wrapper para ejecutar código antes de entrar a los enlaces.
-import AnimalFull from '../page/animals/AnimalFull';
-import Adopted from '../page/animals/Adopted';
-import About from '../page/About';
-import Contexto from '../contexts/Contexto';
+import AnimalFullTurso from 'components/page/animals/AnimalFullTurso';
+import Adopted from 'components/page/animals/Adopted';
+import About from 'components/page/About';
+import Contexto from 'components/contexts/Contexto';
 
 function Rutas() {
 
@@ -16,7 +16,7 @@ function Rutas() {
   return (
     <Routes>
       <Route path={data.config.rutas.animales} element={<RouteWrapper element={Animals} />} />
-      <Route path={`${data.config.rutas.animal}:id`} element={<RouteWrapper element={AnimalFull} />} />
+      <Route path={`${data.config.rutas.animal}:id`} element={<RouteWrapper element={AnimalFullTurso} />} />
       <Route path={data.config.rutas.adopted} element={<RouteWrapper element={Adopted} />} />
       <Route path={data.config.rutas.contacto} element={<RouteWrapper element={Contacto} />} />
       <Route path={data.config.rutas.nosotros} element={<RouteWrapper element={About} />} />

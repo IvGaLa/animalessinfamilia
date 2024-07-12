@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import AnimalGrid from './AnimalGrid'
-import Contexto from '../../contexts/Contexto'
+import AnimalGridTurso from './AnimalGridTurso'
+import Contexto from 'components/contexts/Contexto'
 
 function Animals() {
 
@@ -15,7 +15,7 @@ function Animals() {
       <h2 className={data.estilos.h2}>Visítanos</h2>
       <p className={data.estilos.p}>Estamos aquí para ayudarte a encontrar el compañero perfecto. ¡Ven a conocernos y descubre cómo puedes hacer una diferencia!</p>
 
-      <AnimalGrid />
+      <AnimalGridTurso />
     </section>
   )
 }
