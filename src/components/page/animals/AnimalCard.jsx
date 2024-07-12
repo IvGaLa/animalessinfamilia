@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
-import Contexto from '../../contexts/Contexto';
+import Contexto from 'components/contexts/Contexto';
 
 function AnimalCard({ animal }) {
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Contexto from '../../contexts/Contexto';
+import Contexto from 'components/contexts/Contexto';
 
-import { turso } from '../../../db/tursoClient';
-import PaginationBarTurso from '../pagination/PaginationBarTurso';
+import { turso } from 'db/tursoClient';
+import PaginationBarTurso from 'components/page/pagination/PaginationBarTurso';
 import AnimalCard from './AnimalCard';
 
 

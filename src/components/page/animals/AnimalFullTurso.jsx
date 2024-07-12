@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react';
 import { Navigate, useParams } from 'react-router-dom'
-import { turso } from '../../../db/tursoClient';
-import Contexto from '../../contexts/Contexto';
+import { turso } from 'db/tursoClient';
+import Contexto from 'components/contexts/Contexto';
 
 function AnimalFull() {
   const params = useParams()

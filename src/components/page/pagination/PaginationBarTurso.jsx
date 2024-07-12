@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { turso } from '../../../db/tursoClient';
-import Contexto from '../../contexts/Contexto';
+import { turso } from 'db/tursoClient';
+import Contexto from 'components/contexts/Contexto';
 import { IconArrowBigLeft, IconArrowBigRight } from '@tabler/icons-react';
 
 function PaginationBarTurso({ setOffset }) {

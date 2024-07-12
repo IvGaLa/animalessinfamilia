@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Contexto from '../../contexts/Contexto'
+import Contexto from 'components/contexts/Contexto'
 
 function Adopted() {
 

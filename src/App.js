@@ -1,9 +1,9 @@
 import { BrowserRouter } from 'react-router-dom';
-import Rutas from './components/rutas/Rutas';
-import NavBar from './components/page/navbar/NavBar';
-import Footer from './components/page/footer/Footer';
+import Rutas from 'components/rutas/Rutas';
+import NavBar from 'components/page/navbar/NavBar';
+import Footer from 'components/page/footer/Footer';
 import { useContext, useEffect } from 'react';
-import Contexto from './components/contexts/Contexto';
+import Contexto from 'components/contexts/Contexto';
 
 
 function App() {

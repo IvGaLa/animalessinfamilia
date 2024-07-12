@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import Contexto from '../contexts/Contexto';
+import Contexto from 'components/contexts/Contexto';
 
 // Con este wrapper lo que conseguimos es poder ejecutar código ANTES de entrar en un enlace.
 const RouteWrapper = ({ element: Element }) => {
