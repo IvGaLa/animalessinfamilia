@@ -32,6 +32,7 @@ const CtxProvider = function ({ children }) {
     email: "email@animalessinfamilia",
     logo: "64x64.png",
     dirs: {
+      images: "/images/",
       animals: "/images/animals/",
       animals_thumb: "/384x384/",
       logo: "/images/logo/",

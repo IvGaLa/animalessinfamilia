@@ -4,6 +4,7 @@ import Contexto from 'components/contexts/Contexto';
 import { turso } from 'db/tursoClient';
 import PaginationBarTurso from 'components/page/pagination/PaginationBarTurso';
 import AnimalCard from './AnimalCard';
+import AnimalGridLoading from './AnimalGridLoading';
 
 
 function AnimalGrid() {
@@ -31,12 +32,10 @@ function AnimalGrid() {
         {
           (animales) ?
           animales.map((animal, index) => (
-            <AnimalCard key={index} animal={animal} />
+            <AnimalCard key={`${animal.id}-${animal.name}`} animal={animal} />
           ))
           :
-          <div>
-            Cargando...
-          </div>
+          <AnimalGridLoading />
         }
       </article >
       <PaginationBarTurso setOffset={setOffset} />
