@@ -34,7 +34,7 @@ const CtxProvider = function ({ children }) {
     dirs: {
       images: "/images/",
       animals: "/images/animals/",
-      animals_thumb: "/384x384/",
+      animals_thumb: "384x384/",
       logo: "/images/logo/",
       adopted: "/images/adopted/"
     },
