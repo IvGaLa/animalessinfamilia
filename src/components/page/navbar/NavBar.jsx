@@ -21,7 +21,7 @@ function NavBar() {
             {
               data.enlaces.map((enlace, index) => (
                 (enlace.where.find(where => where === data.linkstypes.navbar)) &&
-                <li key={index}>
+                <li key={`${index}-${enlace.text}`}>
                   <NavLink className="hover:underline me-4 md:me-6" to={enlace.to}>{enlace.text}</NavLink>
                 </li>
               ))
