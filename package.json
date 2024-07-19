@@ -11,7 +11,8 @@
     "react-router-dom": "^6.24.0",
     "@tabler/icons-react": "^3.7.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-lazy-load-image-component": "^1.6.2"
   },
   "scripts": {
     "animales": "react-scripts start",

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react';
+import { IconGenderFemale, IconGenderMale, IconCake, IconHome } from '@tabler/icons-react'
 import { Navigate, useParams } from 'react-router-dom'
-import { turso } from 'db/tursoClient';
-import Contexto from 'components/contexts/Contexto';
+import { turso } from 'db/tursoClient'
+import Contexto from 'components/contexts/Contexto'
 
 function AnimalFull() {
   const params = useParams()
@@ -31,7 +31,11 @@ function AnimalFull() {
 
             <div className="max-w-6xl px-10 py-6 mx-auto bg-gray-50 my-20 rounded-2xl">
 
-              <img className="rounded-3xl w-full shadow-xl h-full" src={`${data.config.dirs.animals}${animal.image}`} alt={animal.name} />
+              <img
+                className="rounded-3xl w-full shadow-xl h-full"
+                src={`${data.config.dirs.animals}${data.config.dirs.animals_thumb}${animal.image}`}
+                alt={animal.name}
+              />
               <div className="flex items-center justify-start mt-4 mb-4">
                 <span className="text-sm p-1 bg-red-400 text-white rounded-lg">
                   {animal.breed}

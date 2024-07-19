@@ -1,7 +1,9 @@
 import { useContext } from 'react'
-import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
-import { NavLink } from 'react-router-dom';
-import Contexto from 'components/contexts/Contexto';
+import { IconCake, IconGenderFemale, IconGenderMale } from '@tabler/icons-react'
+import { NavLink } from 'react-router-dom'
+import Contexto from 'components/contexts/Contexto'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 
 function AnimalCard({ animal }) {
 
@@ -20,8 +22,8 @@ function AnimalCard({ animal }) {
     }
   };
 
-  const {id, sex, name, title,image, breed, birth} = animal
-  
+  const { id, sex, name, title, image, breed, birth } = animal
+
   return (
     < NavLink to={`${data.config.rutas.animal}${id}`}>
       <section className={`${colorSex[sex]['text']} ${colorSex[sex]['cardborder']} p-2 mx-3 mt-6 flex flex-col rounded-[30px] bg-gray-800 shadow-none transition-shadow duration-300 ease-in-out hover:shadow-2xl hover:shadow-black`}>
@@ -33,10 +35,12 @@ function AnimalCard({ animal }) {
         <h3 className={`text-2xl m-2 p-4 whitespace-nowrap text-center`}>{title}</h3>
 
         <div className='flex justify-center'>
-          <img
+          <LazyLoadImage
             className={`rounded-full mb-4 ${colorSex[sex]['imageborder']}`}
             src={`${data.config.dirs.animals}${data.config.dirs.animals_thumb}${image}`}
-            alt={name} />
+            alt={name}
+            placeholderSrc={`${data.config.dirs.images}${data.config.placeholder}`}
+          />
         </div>
 
         <section className="flex flex-col border-t-2 border-gray-300 px-6 py-3">

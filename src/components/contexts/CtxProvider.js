@@ -31,6 +31,7 @@ const CtxProvider = function ({ children }) {
     description: "Animales sin familia es una protectora de animales para ayudar en la adopción.",
     email: "email@animalessinfamilia",
     logo: "64x64.png",
+    placeholder: "placeholder.png",
     dirs: {
       images: "/images/",
       animals: "/images/animals/",
